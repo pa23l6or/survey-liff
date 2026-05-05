@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <p>載入中...</p>
+  <script>
+    liff.init({ liffId: "LIFF_ID_先留空" }).then(() => {
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+      liff.getProfile().then(profile => {
+        const uid = profile.userId;
+        const surveyUrl = "https://www.surveycake.com/s/3ZRD9";
+        window.location.href = surveyUrl + "?line_uid=" + uid;
+      });
+    });
+  </script>
+</body>
+</html>
